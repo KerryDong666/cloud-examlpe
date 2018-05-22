@@ -10,6 +10,7 @@
 		<module>../eureka-server</module>
 		<module>../eureka-client-user-server</module>
 		<module>../eureka-client-goods-server</module>
+		<module>../feign-client</module>
 	</modules>
 	<packaging>pom</packaging>
 
