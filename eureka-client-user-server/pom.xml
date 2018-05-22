@@ -4,22 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.kerry.cloud</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>eureka-client-user-server</artifactId>
 	<version>v1.0.0</version>
-	<modules>
-		<module>../eureka-server</module>
-		<module>../eureka-client-user-server</module>
-	</modules>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>parent</name>
-	<description>SpringCloud example parent</description>
+	<name>eureka-client-user-server</name>
+	<description>MicroServer-UserServer</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -30,33 +26,14 @@
 	</properties>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<!--<scope>provided</scope>-->
-			<!--Unregistering JMX-exposed beans on shutdown-->
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency>
-
+		<!--具体微服务提供方(即eureka-client必须同时导入eureka-client和eureka-server两个jar包,否则无法注册成功)-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -81,25 +58,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 
 </project>
