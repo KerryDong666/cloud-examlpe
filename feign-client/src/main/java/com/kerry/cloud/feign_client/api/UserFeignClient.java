@@ -1,6 +1,7 @@
 package com.kerry.cloud.feign_client.api;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date 2018/5/22
  */
 @FeignClient("micro-server-user")
+@Component
 public interface UserFeignClient {
 
 	/**
@@ -17,6 +19,7 @@ public interface UserFeignClient {
 	 * 注意事项:
 	 *     1.只能使用RequestMapping注解,使用GetMapping/PostMapping等注解无效;
 	 *     2.必须指定method,原始接口中也必须指定
+	 * @return msg
 	 */
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	String test();

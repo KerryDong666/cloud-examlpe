@@ -4,19 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.kerry.cloud</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>gateway</artifactId>
 	<version>v1.0.0</version>
-	<modules>
-		<module>../eureka-server</module>
-		<module>../eureka-client-user-server</module>
-		<module>../eureka-client-goods-server</module>
-		<module>../feign-client</module>
-		<module>../zuul-gateway</module>
-	</modules>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>parent</name>
-	<description>SpringCloud example parent</description>
+	<name>gateway</name>
+	<description>MicroServer API gateway</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,35 +26,25 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<!--<scope>provided</scope>-->
-			<!--Unregistering JMX-exposed beans on shutdown-->
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency>
-
+		<!--具体微服务提供方(即eureka-client必须同时导入eureka-client和eureka-server两个jar包,否则无法注册成功)-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-
+		<!--zuul:微服务网关-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -84,25 +67,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 
 </project>
