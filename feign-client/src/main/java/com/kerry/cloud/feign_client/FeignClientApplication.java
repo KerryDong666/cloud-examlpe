@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.kerry.cloud.feign_client.api"})
 public class FeignClientApplication {
 
 	public static void main(String[] args) {

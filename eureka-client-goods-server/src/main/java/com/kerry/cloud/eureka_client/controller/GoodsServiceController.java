@@ -4,25 +4,21 @@ import com.kerry.cloud.eureka_client.service.GoodsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author CP_dongchuan
- * @date 2018/5/22
+ * @author kerry dong
+ * @date 2019/3/31
  */
 @RestController
-public class TestController {
+public class GoodsServiceController {
 
 	@Autowired
 	private GoodsServiceImpl goodsService;
 
-	@RequestMapping("test")
-	public String test(){
-		return "this is goods server";
-	}
-
-	@RequestMapping(value = "/getGoodsName", method = RequestMethod.GET)
-	public String getGoodsName(String name){
+	@RequestMapping(value = "getName", method = RequestMethod.GET)
+	public String getGoodsName(@RequestParam("name") String name){
 		return goodsService.getGoodsName(name);
 	}
 }
